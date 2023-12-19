@@ -1,10 +1,13 @@
 package com.internship.internshipweb.pojo;
 
+import org.springframework.context.annotation.Bean;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
 
 public class Node {
     private int nodeId;
@@ -59,4 +62,26 @@ public class Node {
         return userRepository.getUserNodesByNodeId(this.nodeId);
 
     }
+
+    private  Connection connection;
+    public Node findNodeById(int nodeId){
+        try {
+            String sql = "SELECT * FROM nodes WHERE node_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, nodeId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                Node node = new Node();
+                node.setNodeId(resultSet.getInt("node_id"));
+                node.setNodeName(resultSet.getString("node_name"));
+                node.setParentId(resultSet.getInt("parent_id"));
+                return node;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 }

@@ -2,11 +2,14 @@ package com.internship.internshipweb.util;
 
 import com.internship.internshipweb.pojo.*;
 import com.internship.internshipweb.pojo.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class TreeUtils {
     private  Connection connection;
 
