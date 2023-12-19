@@ -4,6 +4,14 @@ public class UserNode {
     private int userId;
     private int nodeId;
 
+    public UserNode(int userId, int nodeId) {
+        this.userId = userId;
+        this.nodeId = nodeId;
+    }
+
+    public UserNode() {
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -27,4 +35,12 @@ public class UserNode {
                 ", nodeId=" + nodeId +
                 '}';
     }
+
+    public User getUser() {
+        UserRepository userRepository = new UserRepository();
+        User user = userRepository.findUser(getUserId());
+        return user;
+    }
+
+
 }

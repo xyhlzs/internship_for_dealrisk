@@ -1,5 +1,11 @@
 package com.internship.internshipweb.pojo;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 public class Node {
     private int nodeId;
     private String nodeName;
@@ -46,5 +52,11 @@ public class Node {
                 ", nodeName='" + nodeName + '\'' +
                 ", treeId=" + parentId +
                 '}';
+    }
+
+    public List<UserNode> getUserNodes() {
+        UserRepository userRepository = new UserRepository();
+        return userRepository.getUserNodesByNodeId(this.nodeId);
+
     }
 }

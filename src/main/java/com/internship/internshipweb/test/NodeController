@@ -1,0 +1,32 @@
+package com.internship.internshipweb.test;
+
+import com.internship.internshipweb.pojo.Node;
+import com.internship.internshipweb.pojo.User;
+import com.internship.internshipweb.pojo.UserRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/nodes")
+public class NodeController {
+    private Map<Integer, Node> nodes = new HashMap<>();
+
+    @GetMapping("/{nodeId}")
+    public Node getNode(@PathVariable int nodeId) {
+        // TODO: 根据节点ID获取节点信息，如果节点不存在则返回适当的响应
+        // 此处只是示例，您可以根据实际需求实现该方法
+        return nodes.get(nodeId);
+    }
+
+    @PostMapping("/{nodeId}/users")
+    public Node addUserToNode(@PathVariable int nodeId, @RequestBody User user) {
+        // TODO: 将用户添加到指定节点，如果节点不存在则返回适当的响应
+        // 此处只是示例，您可以根据实际需求实现该方法
+        Node node = nodes.get(nodeId);
+        UserRepository userRepository = new UserRepository();
+        userRepository.addUserNode(user,node);
+        return node;
+    }
+}
