@@ -2,7 +2,10 @@ package com.internship.internshipweb.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.internship.internshipweb.InternshipWebApplication;
+import com.internship.internshipweb.pojo.User;
 import com.internship.internshipweb.pojo.UserNode;
+import com.internship.internshipweb.pojo.UserRepository;
+import com.internship.internshipweb.pojo.UserType;
 import com.internship.internshipweb.util.TreeUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +33,12 @@ public class UserNodeControllerTest {
     @Test
     public void testAddUserNode() throws Exception {
         // 假设存在一个管理员用户
-        int adminUserId = 1; // 使用实际的管理员用户ID
-
+        int adminUserId = 1;
+        User user = new User(adminUserId,"admin", UserType.ADMIN);
+        UserRepository userRepository = new UserRepository();
+        userRepository.addUser(user);
         UserNode userNode = new UserNode();
+
         userNode.setUserId(2); // 使用实际的用户ID
         userNode.setNodeId(3); // 使用实际的节点ID
         ObjectMapper objectMapper  = new ObjectMapper();

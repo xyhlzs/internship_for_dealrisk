@@ -1,11 +1,9 @@
-package com.internship.internshipweb.controler;
+package com.internship.internshipweb.controller;
 
-import com.internship.internshipweb.pojo.*;
 import com.internship.internshipweb.util.TreeUtils;
 import com.internship.internshipweb.pojo.User;
 import com.internship.internshipweb.pojo.UserNode;
 import com.internship.internshipweb.pojo.UserType;
-import com.internship.internshipweb.util.TreeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
